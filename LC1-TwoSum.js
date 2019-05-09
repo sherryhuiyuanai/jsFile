@@ -10,10 +10,11 @@ Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 */
 
 
- // for testing
-let nums = [11, 15, 7, 2];
-let target = 9;
-
+// for testing
+let nums1 = [2, 2, 3];
+let nums2 = [11, 15, 7, 2];
+let target1 = 4;
+let target2 = 9;
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -21,30 +22,22 @@ let target = 9;
  */
 let twoSum = function (nums, target) {
     let index1 = null;
-    let index2 = null;
-    // if(index1 == null){
-    //     for (let i = 0; i < nums.length; i++) {
+    let index2;
 
-    //     }
-    // }
     let i = 0;
-    while(index2 == null){
-
-        let gap = target - nums[i];
-        for (let j = 0; j < nums.length; j++) {
-            if (gap == nums[j]) {
+    while(index1 == null){
+        for(let j = i+1; j < nums.length; j++){
+            if (nums[i] + nums[j] == target) {
+                index1 = i;
                 index2 = j;
-                console.log(index2, 222);
-                if (j !== i) {
-                    index1 = i;
-                }
             }
         }
         i++;
     }
-
     return [index1, index2];
-};
+}
 
-// see output
-console.log(twoSum(nums, target));
+// see output for different param
+console.log(twoSum(nums2, target2));
+
+// notes. when terminal get into a mode like written, it shows the program cannot terminate and there is an infinite loop.
