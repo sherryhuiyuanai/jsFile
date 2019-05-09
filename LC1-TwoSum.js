@@ -13,6 +13,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 
  // for testing
 let nums = [2, 7, 11, 15];
+let target = 9;
 
 /**
  * @param {number[]} nums
@@ -20,6 +21,21 @@ let nums = [2, 7, 11, 15];
  * @return {number[]}
  */
 
-var twoSum = function (nums, target) {
+let twoSum = function (nums, target) {
+    let index1;
+    let index2;
+    for(let i = 0; i < nums.length; i++){
+        let temp = target - nums[i];
+        for(let j = 0; j < nums.length; j++){
+            index2 = temp == nums[j]? j: null;
+            if(index2 == j){
+                index1 = i;
+            }
+        }
+    }
+    let indices = [index1, index2];
 
+    return indices;
 };
+
+console.log(twoSum(nums, target));
