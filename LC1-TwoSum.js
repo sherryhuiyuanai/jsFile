@@ -14,27 +14,24 @@ Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 let nums1 = [2, 2, 3];
 let nums2 = [11, 15, 7, 2];
 let target1 = 4;
-let target2 = 9;
+let target2 = 1;
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
 let twoSum = function (nums, target) {
-    let index1 = null;
-    let index2;
-
-    let i = 0;
-    while(index1 == null){
-        for(let j = i+1; j < nums.length; j++){
-            if (nums[i] + nums[j] == target) {
-                index1 = i;
-                index2 = j;
+    try {
+        for(let i = 0; i < nums.length; i++) {
+            for(let j = i+1; j < nums.length; j++){
+                if (nums[i] + nums[j] == target) {
+                    return [i, j];
+                }
             }
         }
-        i++;
+    } catch (err){
+        print("undefined");
     }
-    return [index1, index2];
 }
 
 // see output for different param
