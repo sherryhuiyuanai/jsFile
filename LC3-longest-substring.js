@@ -34,8 +34,6 @@ let lengthOfLongestSubstring = function (string) {
     let fail_index = 0;
     for(let i = 1; i < str.length; i++){
 
-        array[i] = str[i] == str[i-1]? array[i]: str[i];
-
         if (str[i] != str[i - 1] && !array.includes(str[i])){
             array[i - fail_index - 1] = str[i];
             len_temp = i - fail_index + 1;
@@ -48,8 +46,8 @@ let lengthOfLongestSubstring = function (string) {
         }
         
     }
-    return array;
+    return array.filter(Boolean).length;
 }
 
-str = "pwwkew";
+str = "bbbbb";
 console.log(lengthOfLongestSubstring(str));
