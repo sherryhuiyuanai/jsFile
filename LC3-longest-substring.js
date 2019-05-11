@@ -25,29 +25,24 @@ Explanation: The answer is "wke", with the length of 3.
  * @return {number}
  */
 let lengthOfLongestSubstring = function (string) {
-    let array = Array(string.length);
     let str = string.split("");
+    let array = Array(string.length);
     array[0] = str[0];
-
     let len = 1;
     let len_temp = 1;
     let fail_index = 0;
     for(let i = 1; i < str.length; i++){
-
         if (str[i] != str[i - 1] && !array.includes(str[i])){
-            array[i - fail_index - 1] = str[i];
+            array[i - fail_index] = str[i];
             len_temp = i - fail_index + 1;
-
-            if (len_temp > len){
-                len = len_temp;
-            }
+            len = len_temp > len? len_temp: len;
+            console.log(i, len);
         } else {
             fail_index = i;
         }
-        
     }
-    return array.filter(Boolean).length;
+    return array.filter(a => a != '')//.length;
 }
 
-str = "bbbbb";
+str = "pwwkew";
 console.log(lengthOfLongestSubstring(str));
