@@ -29,29 +29,29 @@ Explanation: The answer is "wke", with the length of 3.
  */
 let lengthOfLongestSubstring = function (string) {
     let str = string.split("");
+    if (str.length == 0) {
+        return 0;
+    }
     let array = Array(string.length);
     array[0] = str[0];
     let len = 1;
     let len_temp = 1;
     let fail_index = 0;
-    for(let i = 1; i < str.length; i++){
-        if (str[i] != str[i - 1] && !array.includes(str[i])){
-            if (fail_index == 0){
+    for(let i = 0; i < str.length-1; i++){
+        if (str[i+1] != str[i] && !array.includes(str[i])){
+            // if (fail_index == 0){
                 array[i - fail_index] = str[i];
-            } else {
-                array[i - fail_index - 1] = str[i];
-            }
+            // } else {
+            //     array[i - fail_index - 1] = str[i];
+            // }
 
             len_temp = i - fail_index + 1;
             len = len_temp > len? len_temp: len;
         } else {
-            fail_index = i;
+            fail_index = i + 1;
         }
-    }
-    if (str.length == 0){
-        return 0;
     }
     return array.filter(a => a != '')//.length;
 }
 
-console.log(lengthOfLongestSubstring("aab"));
+console.log(lengthOfLongestSubstring("aaaaabbbbb"));
