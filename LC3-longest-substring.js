@@ -18,6 +18,9 @@ Input: "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3.
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+             "pwwkewskew"
+             "aabcabacbbwxyz"
 */
 
 /**
@@ -33,16 +36,22 @@ let lengthOfLongestSubstring = function (string) {
     let fail_index = 0;
     for(let i = 1; i < str.length; i++){
         if (str[i] != str[i - 1] && !array.includes(str[i])){
-            array[i - fail_index] = str[i];
+            if (fail_index == 0){
+                array[i - fail_index] = str[i];
+            } else {
+                array[i - fail_index - 1] = str[i];
+            }
+
             len_temp = i - fail_index + 1;
             len = len_temp > len? len_temp: len;
-            console.log(i, len);
         } else {
             fail_index = i;
         }
     }
+    if (str.length == 0){
+        return 0;
+    }
     return array.filter(a => a != '')//.length;
 }
 
-str = "pwwkew";
-console.log(lengthOfLongestSubstring(str));
+console.log(lengthOfLongestSubstring("aab"));
